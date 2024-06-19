@@ -1,11 +1,13 @@
-import { Module } from '@nestjs/common';
+import { Module, ValidationPipe } from '@nestjs/common';
 import { UserModule } from './user/user.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StateModule } from './state/state.module';
 import { CityModule } from './city/city.module';
 import { AddressModule } from './address/address.module';
+import { CacheModuleProject } from './cache/cache.module';
 import typeorm from './config/typeorm';
+import { APP_PIPE } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -35,8 +37,14 @@ import typeorm from './config/typeorm';
     StateModule,
     CityModule,
     AddressModule,
+    CacheModuleProject,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
+    },
+  ],
 })
 export class AppModule {}
