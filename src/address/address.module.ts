@@ -7,9 +7,10 @@ import { AddressEntity } from './entities/address.entity';
 import { UserRepository } from 'src/user/repository/user.repository';
 import { UserEntity } from 'src/user/entites/user.entity';
 import { CityRepository } from 'src/city/repository/citiy.repository';
+import { CityEntity } from 'src/city/entities/city.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([AddressEntity, UserEntity])],
+  imports: [TypeOrmModule.forFeature([AddressEntity, UserEntity, CityEntity])],
   controllers: [AddressController],
   providers: [
     AddressService,
