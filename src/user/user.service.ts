@@ -26,7 +26,6 @@ export class UserService {
       ...CreateUserDto,
       password: passwordHash,
     });
-    console.log(newUser);
 
     const classNewUser = new NewUser(
       newUser.id,

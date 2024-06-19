@@ -44,8 +44,7 @@ export class UserEntity {
     type: 'integer',
     nullable: false,
   })
-  typeUser:number
-
+  typeUser: number;
 
   @Column({
     name: 'created_at',
