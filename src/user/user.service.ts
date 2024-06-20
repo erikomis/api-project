@@ -45,4 +45,12 @@ export class UserService {
 
     return users;
   }
+
+  async getUserRelationsAddress(id: number): Promise<UserEntity> {
+    const user = await this.userRepository.getUserByIdUsingRelations(
+      Number(id),
+    );
+
+    return user;
+  }
 }

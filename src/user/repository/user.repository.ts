@@ -32,4 +32,18 @@ export class UserRepository {
       select: ['id', 'name', 'email', 'phone', 'cpf', 'createdAt', 'updatedAt'],
     });
   }
+
+  async getUserByIdUsingRelations(id: number): Promise<UserEntity> {
+    return this.userRepository.findOne({
+      where: { id },
+      select: ['id', 'name', 'email', 'phone', 'cpf', 'createdAt', 'updatedAt'],
+      relations: {
+        addresses: {
+          city: {
+            state: true,
+          },
+        },
+      },
+    });
+  }
 }
