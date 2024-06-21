@@ -7,7 +7,12 @@ import { CityModule } from './city/city.module';
 import { AddressModule } from './address/address.module';
 import { CacheModuleProject } from './cache/cache.module';
 import typeorm from './config/typeorm';
-import { APP_PIPE } from '@nestjs/core';
+import { APP_GUARD, APP_PIPE } from '@nestjs/core';
+import { AuthModule } from './auth/auth.module';
+import { RoleGuard } from './guards/role.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { CategoryModule } from './category/category.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -33,17 +38,29 @@ import { APP_PIPE } from '@nestjs/core';
       useFactory: async (configService: ConfigService) =>
         configService.get('typeorm'),
     }),
+
     UserModule,
     StateModule,
     CityModule,
     AddressModule,
     CacheModuleProject,
+    AuthModule,
+    CategoryModule,
+    ProductModule,
   ],
   controllers: [],
   providers: [
     {
       provide: APP_PIPE,
       useClass: ValidationPipe,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RoleGuard,
     },
   ],
 })
