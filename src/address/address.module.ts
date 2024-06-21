@@ -4,10 +4,10 @@ import { AddressRepository } from './repository/address.repositoy';
 import { AddressService } from './address.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AddressEntity } from './entities/address.entity';
-import { UserRepository } from 'src/user/repository/user.repository';
-import { UserEntity } from 'src/user/entites/user.entity';
-import { CityRepository } from 'src/city/repository/citiy.repository';
-import { CityEntity } from 'src/city/entities/city.entity';
+import { UserEntity } from '../user/entites/user.entity';
+import { CityEntity } from '../city/entities/city.entity';
+import { UserRepository } from '../user/repository/user.repository';
+import { CityRepository } from '../city/repository/citiy.repository';
 
 @Module({
   imports: [TypeOrmModule.forFeature([AddressEntity, UserEntity, CityEntity])],

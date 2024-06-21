@@ -19,4 +19,16 @@ export class AddressRepository {
 
     return newAddress;
   }
+
+  findAddressByUserId(userId: number) {
+    return this.addressRepository.find({
+      where: { userId },
+
+      relations: {
+        city: {
+          state: true,
+        },
+      },
+    });
+  }
 }

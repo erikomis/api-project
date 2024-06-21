@@ -1,5 +1,3 @@
-import { CityEntity } from 'src/city/entities/city.entity';
-import { UserEntity } from 'src/user/entites/user.entity';
 import {
   Column,
   Entity,
@@ -7,6 +5,8 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { UserEntity } from '../../user/entites/user.entity';
+import { CityEntity } from '../../city/entities/city.entity';
 
 @Entity({
   name: 'address',

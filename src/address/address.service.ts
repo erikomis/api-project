@@ -35,4 +35,14 @@ export class AddressService {
 
     return newAddress;
   }
+
+  async findAddressByUserId(userId: number): Promise<AddressEntity[]> {
+    const addresses = await this.addressRepository.findAddressByUserId(userId);
+
+    if (!addresses) {
+      throw new NotFoundException(`Endereço com id ${userId} não encontrado`);
+    }
+
+    return addresses;
+  }
 }
